@@ -14,8 +14,11 @@ import (
 )
 
 func init() {
-	if err := godotenv.Load(".env"); err != nil {
-		log.Fatal("Error in loading .env file", err)
+	if os.Getenv("ENV") != "production" {
+		
+		if err := godotenv.Load(".env"); err != nil {
+			log.Println("Warning: .env file not found. Proceeding without it.")
+		}
 	}
 	
     database.ConnectDB()
