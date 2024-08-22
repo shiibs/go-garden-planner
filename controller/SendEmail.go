@@ -65,7 +65,7 @@ func SendEmail(userEmail string, gardenLayout model.GardenLayout) error {
 	body.WriteString("\n--boundary--\n")
 
 	// Sending the email with attachments
-	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, body.Bytes())
+	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, "mailer@go-gardening.com", to, body.Bytes())
 	if err != nil {
 		return fmt.Errorf("error sending mail, %w", err)
 	}
