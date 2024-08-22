@@ -24,7 +24,7 @@ var googleOauthConfig *oauth2.Config
 
 func InitOAuth() {
 	googleOauthConfig = &oauth2.Config{
-		RedirectURL:  "https://go-garden-planner.onrender.com/auth/callback",
+		RedirectURL:  "https://go-gardening.com/auth/callback",
 		ClientID:     os.Getenv("G_ClientID"),
 		ClientSecret: os.Getenv("G_ClientSecret"),
 		Scopes:       []string{"https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"},
@@ -100,7 +100,7 @@ func GoogleCallbackHandler(c *fiber.Ctx) error {
 		Expires:  time.Now().Local().Add(30 * 24 * time.Hour),
 	})
 
-	return c.Redirect("https://go-garden-planner.onrender.com/", fiber.StatusTemporaryRedirect)
+	return c.Redirect("https://go-gardening.com", fiber.StatusTemporaryRedirect)
 }
 
 type UserInfoResponse struct {
